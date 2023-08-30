@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react"; // Import useState
+import HomePage from "./Pages/HomePage";
+import LoginPage from "./Pages/LoginPage";
+import RegisterPage from "./Pages/RegisterPage";
+import { createBrowserRouter, RouterProvider } from "react-router-dom"; // Import createBrowserRouter
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLogin = () => {
+    // Perform login logic
+    setIsLoggedIn(true);
+  };
+
+  const handleLogout = () => {
+    // Perform logout logic
+    setIsLoggedIn(false);
+  };
+
+  const router = createBrowserRouter([
+    {
+      path: "login",
+      element: <LoginPage onLogin={handleLogin} />,
+    },
+    {
+      path: "register",
+      element: <RegisterPage />,
+    },
+    {
+      path: "home",
+      element: (
+        <HomePage isLoggedIn={isLoggedIn} onLogout={handleLogout}></HomePage>
+      ),
+    },
+  ]);
+
+  return <RouterProvider router={router} />;
+};
 
 export default App;
