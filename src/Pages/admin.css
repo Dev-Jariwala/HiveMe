@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Capriola&family=Chenla&display=swap");
+.p-heading {
+  margin: 20px auto 0;
+  text-align: start;
+  color: #555;
+  padding-left: 40px;
+}
+.p-heading a {
+  color: #555;
+}
+.statcards-container {
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: ; Adjust as needed */
+  gap: 20px; /* Adjust spacing between cards */
+  margin: auto;
+  width: 95%;
+}
+.statcards-container > div {
+  flex: 1 1 calc(33.33% - 20px); /* Distributes remaining space evenly among cards and limits card width */
+  max-width: calc(33.33% - 20px); /* Adjust the max-width of each card */
+}
+
+/* Add a media query for smaller screens */
+@media (max-width: 1050px) {
+  .statcards-container > div {
+    flex-basis: calc(50% - 20px); /* Make cards 50% wide on smaller screens */
+    max-width: calc(50% - 20px); /* Adjust the max-width of each card */
+  }
+}
+/* Add a media query for smaller screens */
+@media (max-width: 692px) {
+  .statcards-container > div {
+    flex-basis: calc(100% - 20px); /* Make cards 50% wide on smaller screens */
+    max-width: calc(100% - 20px); /* Adjust the max-width of each card */
+  }
+}
